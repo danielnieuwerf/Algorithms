@@ -20,6 +20,8 @@ void selectionSort(vector<int>&);
 void write_csv(std::string, long long);
 void heapSort(vector<int>&);
 void convertHeap(vector<int>&, int, int);
+void binaryInsertionSort(vector<int>&);
+void introSort(vector<int>&);
 
 // operator overloading
 template <typename T>
@@ -33,6 +35,7 @@ int main()
 	for (int i = 0; i < 10; ++i) {
 		vec.push_back(rand());
 	}
+	// Run the test 5000 times
 	int x = 5001;
 	while (--x) {
 		for (int i = 0; i < 10; ++i) {
@@ -155,8 +158,8 @@ void selectionSort(vector<int>& vec) {
 void convertHeap(vector<int>& vec, int len, int x)
 {
 	int largest = x;
-	int left = 2 * x + 1;
-	int right = 2 * x + 2;
+	int left = 2 *x + 1;
+	int right = 2 *x + 2;
 
 	if (left < len && vec[left] > vec[largest]) {
 		largest = left;
@@ -190,8 +193,45 @@ void heapSort(vector<int>& vec)
 	}
 	return;
 }
-void quickSort(vector<int>& vec) {
+void introSort(vector<int>& vec) {
 	sort(vec.begin(), vec.end());
+}
+
+void binaryInsertionSort(vector<int>& vec) {
+	int n = vec.size();
+	if (n == 0)
+		return;
+	vector<int> ans{};
+	ans.push_back(vec[0]);
+	ans.reserve(n);	// ans will be size n
+
+	for (int i = 1; i < n; ++i) {
+		// find where to insert num into ans
+		int left = 0;
+		int right = i-1;
+		int mid = 0;
+		int x = vec[i];
+		// binary search to find where to insert into ans
+		while (left <= right) {
+			mid = (left + right)/ 2;
+			if (x > ans[mid]) {
+				left = mid + 1;
+				mid = left;
+			}
+			else if (x < ans[mid]) {
+				right = mid - 1;
+				mid = right+1;
+			}
+			else{
+				break;
+			}
+		}
+		// insert x into ans
+		ans.insert(ans.begin() + mid, x);
+	}
+
+	//set vec
+	vec = ans;	
 }
 
 /*
