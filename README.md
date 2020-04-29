@@ -8,7 +8,7 @@ Implementation of Dijkstra's algorithm for finding the shortest path.
 A class of it's description. A collection of these objects forms the graph on which Dijkstra's algorithm can be implemented.
 - SortingAlgortihms.cpp:
 
-Some of my implementations of various sorting algorithms and the code used to collect data on these sorting algorithms.
+Some of my implementations of various sorting algorithms and the code used to collect data on them.
 - bubblesorts10000.png:
 
 Bubble sort versus Bi Directional Bubble sort. 
