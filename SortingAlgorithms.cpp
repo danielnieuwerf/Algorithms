@@ -67,7 +67,7 @@ void write_csv(std::string filename, long long x) {
 	std::ofstream myFile(filename, std::ios_base::app);
 
 	// Send data to the stream
-	myFile << x<<","<<endl;
+	myFile << x << "," << endl;
 
 	// Close the file
 	myFile.close();
@@ -75,7 +75,7 @@ void write_csv(std::string filename, long long x) {
 void compareAlgorithms() {
 	cout << "Algorithm" << setw(20) << "Best Time" << setw(20) << "Average Time" <<
 		setw(20) << "Worst Time" << setw(20) << "Space" << endl << endl;
-	cout << "Bubble Sort" << setw(20) << "O(n)" << setw(20) << "O(n^2)" <<setw(20)<< "O(n^2)"
+	cout << "Bubble Sort" << setw(20) << "O(n)" << setw(20) << "O(n^2)" << setw(20) << "O(n^2)"
 		<< setw(20) << "O(1)" << endl;
 
 }
@@ -83,14 +83,14 @@ void compareAlgorithms() {
 /*
 *	Algorithms
 */
-void bubbleSort(vector<int> &vec) {
+void bubbleSort(vector<int>& vec) {
 
 	int n = vec.size();
 	for (int i = 1; i < n; ++i) {
 		bool swapped = false;
 
 		for (int j = 0; j < n - i; ++j) {
-			
+
 			if (vec[j] > vec[j + 1]) {
 				swap(vec[j], vec[j + 1]);
 				swapped = true;
@@ -111,7 +111,7 @@ void biDirectionalBubbleSort(vector<int>& vec) {
 	for (int i = 1; i < n; ++i) {
 		bool swapped = false;
 
-		for (int j = 0; j < n - i; ++j) {		
+		for (int j = 0; j < n - i; ++j) {
 			if (vec[j] > vec[j + 1]) {
 				swap(vec[j], vec[j + 1]);
 				swapped = true;
@@ -123,7 +123,7 @@ void biDirectionalBubbleSort(vector<int>& vec) {
 		}
 
 		swapped = false;
-		for (int j = n-i-1; j >= i; --j) {
+		for (int j = n - i - 1; j >= i; --j) {
 			if (vec[j] > vec[j + 1]) {
 				swap(vec[j], vec[j + 1]);
 				swapped = true;
@@ -158,8 +158,8 @@ void selectionSort(vector<int>& vec) {
 void convertHeap(vector<int>& vec, int len, int x)
 {
 	int largest = x;
-	int left = 2 *x + 1;
-	int right = 2 *x + 2;
+	int left = 2 * x + 1;
+	int right = 2 * x + 2;
 
 	if (left < len && vec[left] > vec[largest]) {
 		largest = left;
@@ -187,7 +187,6 @@ void heapSort(vector<int>& vec)
 
 	for (int i = len - 1; i >= 0; --i)
 	{
-
 		swap(vec[0], vec[i]);
 		convertHeap(vec, i, 0);
 	}
@@ -208,21 +207,21 @@ void binaryInsertionSort(vector<int>& vec) {
 	for (int i = 1; i < n; ++i) {
 		// find where to insert num into ans
 		int left = 0;
-		int right = i-1;
+		int right = i - 1;
 		int mid = 0;
 		int x = vec[i];
 		// binary search to find where to insert into ans
 		while (left <= right) {
-			mid = (left + right)/ 2;
+			mid = (left + right) / 2;
 			if (x > ans[mid]) {
 				left = mid + 1;
 				mid = left;
 			}
 			else if (x < ans[mid]) {
 				right = mid - 1;
-				mid = right+1;
+				mid = right + 1;
 			}
-			else{
+			else {
 				break;
 			}
 		}
@@ -231,7 +230,7 @@ void binaryInsertionSort(vector<int>& vec) {
 	}
 
 	//set vec
-	vec = ans;	
+	vec = ans;
 }
 
 /*
